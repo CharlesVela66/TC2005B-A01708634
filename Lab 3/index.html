@@ -12,26 +12,26 @@
         <h1> An Awesome Web Page!</h1>
     </header>
     <section>
-        <h2> Mi informacion </h2>
+        <h2> <span>Mi informacion </span></h2>
         <p> 
         <form>
             <i>
-                Ingresa mi nombre (Carlos Eduardo)
+                <span>Ingresa mi nombre (Carlos Eduardo)</span>
                 <input type="text" pattern="Carlos Eduardo"> <br>
-                Ingresa mi apellido (Velasco Elenes)
+                <span>Ingresa mi apellido (Velasco Elenes)</span>
                 <input type="text" pattern="Velasco Elenes"> <br>
-                Ingresa mi matricula (A01708634)
+                <span>Ingresa mi matricula (A01708634)</span>
                 <input type="text" pattern="A01708634"> <br>
                 <input type = "submit">
-                <input type = "reset"> <br>
-                <a href="mailto:A01708634@tec.mx"> Mi Correo Del Tec :p</a> 
+                <input type = "reset"> <br> <br>
+                <a href="mailto:A01708634@tec.mx"><span> Mi Correo Del Tec :p</span></a> 
             </i>
         </form>
         </p>
-        <h2> Una foto de un perrito </h2>
-        <img src = "https://t2.uc.ltmcdn.com/es/posts/8/3/9/como_saber_si_mi_golden_es_puro_50938_600.webp" alt="A golden retriever" class = "center">
-        <h2> Preguntas a contestar </h2>
-        <table style="background-color: aquamarine; margin-left: auto; margin-right: auto;">
+        <h2> <span> Una foto de un perrito </span></h2>
+        <img src = "https://t2.uc.ltmcdn.com/es/posts/8/3/9/como_saber_si_mi_golden_es_puro_50938_600.webp" alt="A golden retriever" class = "center clip-image">
+        <h2> <span> Preguntas a contestar </span> </h2>
+        <table>
             <tr>
                     <th> PREGUNTA </th>
                     <th> RESPUESTA </th>
@@ -197,6 +197,37 @@
                         </li>
                     </ol>
                 </td>
+            </tr>
+            <tr>
+                <td>Como ingeniero de software ¿cuál es tu recomendación sobre el uso de !important en un CSS?</td>
+                <td> Mi recomendación es que se use cuando no se está cumpliendo el comportamiento deseado y se tiene la seguridad que el atributo está implementado correctamente, porque lo que hace el comando de important es que le pone más importancia al atributo de CSS que se está marcando como importante. Yo en lo personal usaría el !important como último recurso porque puede sobrescribir algunos de los templates que declaramos anteriormente para la clase o tag en particular.</td>
+            </tr>
+            <tr>
+                <td>Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con cuidado?</td>
+                <td> Por diferentes motivos:  
+                    <ol>
+                        <li>
+                            Si la imagen es de mucha calidad, va a tardar más en cargarse
+                        </li>
+                        <li>
+                            La imagen puede no ser de la misma resolución del fondo
+                        </li>
+                        <li>
+                            Si la imagen es muy llamativa, distrae la parte importante de la página, que es el contenido
+                        </li>
+                        <li>
+                            Los colores de la imagen pueden no ser los mismos que la paleta de colores o del estilo de la página
+                        </li>
+                    </ol>
+                </td>
+            </tr>
+            <tr>
+                <td>Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de un propiedad de estilo entre %, px y pt?</td>
+                <td> Yo daría como recomendación utilizar % y px, ya que los pixeles son las unidades que comúnmente se miden las imágenes, por lo tanto, será más cómodo trabajar con px cuando tenemos una referencia específica a la cual queremos definir nuestra imagen. Por el otro lado, si no tenemos una referencia, podemos usar porcentajes, lo cual también nos ayudará para adecuar la imagen a diferentes resoluciones</td>
+            </tr>
+            <tr>
+                <td>¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del sitio?</td>
+                <td> Los archivos CSS que nosotros escribimos tienen mucho espacio vacío, lo cual nos ayuda mucho a nosotros los desarrolladores para entender el código. Sin embargo, si se hace una versión minimizada del CSS, la computadora lo compila y carga más rápido</td>
             </tr>
         </table>
     </section>
