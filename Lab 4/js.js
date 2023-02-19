@@ -122,9 +122,9 @@ function createLine(width){
 }
 
 function createBox(w, h){
-    for (let row = 1; row < w - 1; row++){
+    for (let row = 1; row < h - 1; row++){
         let text = "*";
-        for (let col = 1; col < h - 1; col++){
+        for (let col = 1; col < w - 1; col++){
             text += "&nbsp;&nbsp;";
         }
         text += "*";
