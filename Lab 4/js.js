@@ -135,5 +135,11 @@ function createBox(w, h){
 }
 
 function getPerimeter(a,b){
+    if (a == 2){
+        return b * 2; 
+    }
+    if (b == 2){
+        return a * 2;
+    }
     return 2 * a + 2 * b;
 }
