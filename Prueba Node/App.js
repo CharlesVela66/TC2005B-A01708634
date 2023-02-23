@@ -16,3 +16,16 @@ for (let item of arreglo){
 }
 console.log("Este log está después de imprimir el arreglo"); // Esta función no se detiene porque es asíncrona, significa que ejecuta todas las instrucciones a la vez, a comparación de la linea 8 que como es sincrona se tiene que ejecutar primero porque le especificamos que es sincrona
 setTimeout(() => {console.log('Ya te hackie')},12000);
+
+// http es el modulo que permite crear un servidor que pueda atender peticiones http
+const http = require('http');
+
+// Creacion de servidor
+const server = http.createServer( ( //objeto de la peticion
+    request, //objeto de la peticion
+    response) => {//objeto que vamos a ir modificando y mandarle como respuesta al cliente
+        console.log(request.url);
+    }
+
+)
+server.listen(3000);
