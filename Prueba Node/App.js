@@ -25,6 +25,10 @@ const server = http.createServer( ( //objeto de la peticion
     request, //objeto de la peticion
     response) => {//objeto que vamos a ir modificando y mandarle como respuesta al cliente
         console.log(request.url);
+        response.setHeader('Content-Type', 'text/html');
+        response.write("<h1> Hola </h1>")
+        response.write("Saludos");
+        response.end();
     }
 
 )
