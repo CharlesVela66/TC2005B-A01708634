@@ -44,7 +44,7 @@ function validar(){
 }
 function comparar(){
 
-    if (pass.value == pass2.value && (may.style.color && min.style.color && car.style.color && num.style.color && len.style.color) == "green"){
+    if (pass.value == pass2.value && may.style.color == "green" && min.style.color == "green" && car.style.color == "green" && num.style.color == "green" && len.style.color == "green"){
         may.style.display = 'none';
         min.style.display = 'none';
         car.style.display = 'none';
