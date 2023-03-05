@@ -1,4 +1,5 @@
 const express = require('express');
+const filesystem = require('fs');
 
 const router = express.Router();
 
@@ -25,10 +26,11 @@ router.get('/nuevo', (request, response, next) => {
     response.send(html);
 });
 router.post('/nuevo', (request, response, next) => {
+    let player =  request.body.player;
     let html = `
         El jugador de futbol es: 
     `
-    html += request.body.player;
+    html += player;
     html += `
     <br> <br>
     <a href = "/home">
@@ -36,7 +38,8 @@ router.post('/nuevo', (request, response, next) => {
             Volver a home
         </button>
     </a>
-    `
+    `;
+    filesystem.writeFileSync("futbolista.txt", "El nombre del futbolista es: " + player);
     console.log(request.body);
     console.log(request.body.player);
     response.send(html);
