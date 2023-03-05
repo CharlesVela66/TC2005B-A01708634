@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/nuevo', (request, response, next) => {
     let html = `
-        <form action = "/clhockey/nuevo" method = "POST">
+        <form action = "/hockey/nuevo" method = "POST">
             <label for "player"> Nombre del jugador </label>
             <input type = "text" id = "player" name = "player">
             <input type = "submit" value = "Enviar">
