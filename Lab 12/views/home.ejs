@@ -1,0 +1,37 @@
+<%- include('include/head.ejs') %>
+
+<h1 class = "title is-1"> ¿Qué tipo de jugador quieres registrar? </h1>
+<div class = "columns is-centered">
+    <div class = "column">
+        <div class = "card">
+            <header class = "card-header">
+                <p class = "card-header-title"> HOCKEY </p>
+            </header>
+            <a href = "/hockey">
+                <button class = "button">
+                    Registrar jugador de Hockey
+                </button>
+            </a>
+            <figure class="image is-4by3">
+                <img src="https://cms.nhl.bamgrid.com/images/photos/337670152/1024x576/cut.jpg" alt="Hockey Players">
+            </figure>
+        </div>
+    </div>
+    <div class = "column">
+        <div class = "card">
+            <header class = "card-header">
+                <p class = "card-header-title"> FUTBOL </p>
+            </header>
+            <a href = "/futbol">
+                <button class = "button">
+                    Registrar jugador de Futbol
+                </button>
+            </a>
+            <figure class="image is-4by3">
+                <img src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2023/03/05/16780443253068.jpg" alt="Football Players">
+            </figure>
+        </div>
+    </div>
+
+    <%- include('include/foot.ejs') %>
+</div>
