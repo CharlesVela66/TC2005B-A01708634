@@ -1,0 +1,44 @@
+<%- include('../includes/head.ejs'); %>
+<h1 class="title is-1 has-text-white-ter">Progreso</h1>
+<div class="columns">
+    <div class="column is-two-fifths">
+        <div class = "select">
+            <select id = "medida">
+                <option>Brazo Derecho</option>
+                <option>Brazo Izquierdo</option>
+                <option>Cintura</option>
+                <option>Cuello</option>
+                <option>Pecho</option>
+                <option>Pantorrilla Derecha</option>
+                <option>Pantorrilla Izquierda</option>
+                <option>Peso</option>
+                <option>Pierna Derecha</option>
+                <option>Pierna Izquierda</option>
+            </select>
+        </div>
+        <table class = "table has-text-white-ter has-background-black-ter">
+            <thead>
+                <tr>
+                    <th class="has-text-white-ter">Fecha</th>     
+                    <th class="has-text-white-ter">Brazo Derecho</th>           
+                </tr>
+            </thead>
+            <tbody>
+                <% if (progresos.length > 0) { %>
+                    <% for (let registro of progresos) { %>
+                        <tr> 
+                        <th class="has-text-white-ter"> <%= registro.fecha %></th>
+                        <td> <%= registro.brazo_der %></td>
+    
+                        </tr>
+                    <% } %>
+            <% } %>
+            </tbody>
+        </table>
+    </div>
+    <div class = "column ml-6 mt-6">
+        <img src = "https://cdn.exceltotal.com/wp-content/uploads/2012/04/formato-personalizado-al-eje-vertical-de-un-grafico-01.png">
+    </div>
+</div>
+
+<%- include('../includes/foot.ejs'); %>

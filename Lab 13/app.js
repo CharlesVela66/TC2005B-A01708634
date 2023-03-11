@@ -11,28 +11,40 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-//Middleware
-app.use((request, response, next) => {
-    console.log('Middleware!');
-    next(); //Le permite a la petición avanzar hacia el siguiente middleware
-});
+const rutasHome = require('./routes/home.routes');
+
+app.use('/', rutasHome);
+
+const rutasBitacora = require('./routes/bitacora.routes');
+
+app.use('/home', rutasBitacora);
+
+const rutasDieta = require('./routes/dietas.routes');
+
+app.use('/dietas', rutasDieta);
+
+const rutasRutinas = require('./routes/rutinas.routes');
+
+app.use('/rutinas', rutasRutinas);
+
+const rutasProgreso = require('./routes/progreso.routes');
+
+app.use('/progreso', rutasProgreso);
+
+const rutasMedidas = require('./routes/medidas.routes');
+
+app.use('/medidas', rutasMedidas);
+
+const rutasPerfil = require('./routes/perfil.routes');
+
+app.use('/perfil', rutasPerfil);
+
+const rutasAdmin = require('./routes/admin.routes');
+
+app.use('/admin', rutasAdmin);
 
 app.use((request, response, next) => {
-    console.log('Otro middleware!');
-    next();
-});
-
-app.use('/hola', (request, response, next) => {
-    response.send('Hola desde la ruta /hola');
-});
-
-const rutasPerros = require('./routes/perros.routes');
-
-app.use('/perros', rutasPerros);
-
-app.use((request, response, next) => {
-    console.log("Tercer middleware");
-
+    console.log("Page not found!")
     response.status(404);
     
     //Envía la respuesta al cliente

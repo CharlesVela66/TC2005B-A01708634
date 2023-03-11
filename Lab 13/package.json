@@ -1,7 +1,7 @@
 {
-  "name": "lab-13",
+  "name": "tc2005b-equipo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Pagina web por GoaTech",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
@@ -9,14 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CharlesVela66/TC2005B-A01708634.git"
+    "url": "git+https://github.com/CharlesVela66/TC2005B-Equipo.git"
   },
-  "author": "Carlos Velasco",
+  "keywords": [
+    "goatech"
+  ],
+  "author": "GoaTech",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CharlesVela66/TC2005B-A01708634/issues"
+    "url": "https://github.com/CharlesVela66/TC2005B-Equipo/issues"
   },
-  "homepage": "https://github.com/CharlesVela66/TC2005B-A01708634#readme",
+  "homepage": "https://github.com/CharlesVela66/TC2005B-Equipo#readme",
   "dependencies": {
     "body-parser": "^1.20.2",
     "ejs": "^3.1.8",

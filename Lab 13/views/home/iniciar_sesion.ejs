@@ -1,0 +1,20 @@
+<%- include('../includes/head_inicio.ejs'); %>
+<div class="columns is-centered">
+    <div class="column is-half">
+        <label for = "id_login "> <h5 class="title is-5 has-text-white-ter">Usuario: </h5></label>
+        <input class="input is-info" type="text" id="id_login" name="id_login">
+        <br><br>
+        <label for = "password "> <h5 class="title is-5 has-text-white-ter">Contraseña: </h5></label>
+        <input class="input is-info" type="password" id="password" name="password">
+        <br><br>
+        <div class="field is-grouped">
+            <div class="control">
+              <a href="/home"><button class="button is-info">Enviar</button></a>
+            </div>
+            <div class="control">
+              <a href = "/"><button class="button is-link is-light">Cancelar</button></a>
+            </div>
+          </div>
+    </div>
+</div>
+<%- include('../includes/foot.ejs'); %>
