@@ -1,0 +1,59 @@
+<%- include('../includes/head_inicio.ejs'); %>
+
+<div class="field">
+    <label class="label"><h5 class="subtitle is-5 has-text-white-ter">Ingresa tu(s) nombre(s): </h5></label>
+    <div class="control">
+      <input class="input is-info is-rounded" type="text" placeholder="Ingresa tu(s) nombre(s)" size="25">
+    </div>
+</div>
+  
+<div class="field">
+  <label class="label"><h5 class="subtitle is-5 has-text-white-ter">Ingresa tu(s) apellidos(s): </h5></label>
+  <div class="control">
+    <input class="input is-info is-rounded" type="text" placeholder="Ingresa tu(s) apellidos(s)" size="25">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label"><h5 class="subtitle is-5 has-text-white-ter">Crea un usuario: </h5></label>
+  <div class="control">
+    <input class="input is-info is-rounded" type="text" placeholder="Carlos123" size="25">
+  </div>
+</div>
+  
+<div class="field">
+  <label class="label"><h5 class="subtitle is-5 has-text-white-ter">Ingresa tu correo electrónico: </h5></label>
+  <div class="control">
+    <input class="input is-info is-rounded" type="text" placeholder="user@example.com" size="25">
+  </div>
+</div>
+  
+  <div class="field">
+    <label class="label"><h5 class="subtitle is-5 has-text-white-ter">Sexo </h5></label>
+    <div class="control">
+      <div class="select">
+        <select>
+          <option disabled selected>Selecciona una opción</option>
+          <option>M</option>
+          <option>F</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  
+  <div class="field">
+    <label for="birthday"><h5 class="subtitle is-5 has-text-white-ter">Fecha de nacimiento</h5></label>
+
+    <input class ="is-rounded" type="date" id="birthday" name="birthday">
+  </div>
+  
+  <div class="field is-grouped">
+    <div class="control">
+      <a href="/home"><button class="button is-info">Enviar</button></a>
+    </div>
+    <div class="control">
+      <a href = "/"><button class="button is-link is-light">Cancelar</button></a>
+    </div>
+  </div>
+
+  <%- include('../includes/foot.ejs'); %>
