@@ -1,0 +1,82 @@
+1.
+SELECT SUM(e.cantidad) as "Cantidades", SUM(m.precio) as "Importe Total"
+FROM Entregan e, materiales m
+WHERE e.clave = m.clave
+AND e.fecha BETWEEN "1997-01-01" AND "1998-01-01";
+
+2.
+SELECT p.razonsocial, COUNT(e.cantidad) as "Cantidades", SUM(m.precio) as "Importe Total"
+FROM Entregan e, materiales m, proveedores p
+WHERE e.clave = m.clave
+AND p.rfc = e.rfc
+GROUP BY p.razonsocial
+ORDER BY SUM(m.precio) DESC;
+
+3. 
+SELECT m.clave as "Clave", m.descripcion as "Descripcion", SUM(e.cantidad) as "Cantidad Total", MIN(e.cantidad) as "Minima Cantidad", MAX(e.cantidad) as "Maxima Cantidad", SUM(m.precio) as "Importe Total"
+FROM materiales m, entregan e
+WHERE e.clave = m.clave
+GROUP BY m.clave
+HAVING AVG(e.cantidad) > 400
+ORDER BY SUM(m.precio) DESC;
+
+4.
+SELECT p.razonsocial as "Razon Social", AVG(e.cantidad) as "Promedio de Cantidad", m.clave as "Clave de Material", m.descripcion as "Descripcion de Material"
+FROM proveedores p, entregan e, materiales m
+WHERE p.rfc = e.rfc
+AND m.clave = e.clave
+GROUP BY  m.descripcion
+HAVING AVG(E.cantidad) > 500
+ORDER BY AVG(e.cantidad) DESC;
+
+5.
+SELECT p.razonsocial as "Razon Social", AVG(e.cantidad) as "Promedio de Cantidad", m.clave as "Clave de Material", m.descripcion as "Descripcion de Material"
+FROM proveedores p, entregan e, materiales m
+WHERE p.rfc = e.rfc
+AND m.clave = e.clave
+GROUP BY  m.descripcion
+HAVING (AVG(e.cantidad) < 370 OR AVG(e.cantidad) > 450)
+ORDER BY AVG(e.cantidad) DESC;
+
+6.
+SELECT m.clave as "Clave", m.descripcion as "Descricpion"
+NULL;FROM materiales m
+LEFT JOIN entregan e ON m.clave = e.clave WHERE e.clave IS 
+
+7.
+SELECT p.razonsocial
+FROM proveedores p, proyectos pr, entregan e
+WHERE pr.denominacion IN ('Vamos México', 'Querétaro Limpio')
+AND p.rfc = e.rfc
+AND pr.numero = e.numero
+GROUP BY p.razonsocial;
+
+8. 
+SELECT Descripcion
+FROM Materiales
+WHERE Clave NOT IN (
+  SELECT Clave
+  FROM Entregan e, proyectos p
+  WHERE p.denominacion = 'CIT Yucatán'
+  AND e.numero = p.numero
+);
+
+9. 
+SELECT p.razonsocial AS "Razon Social", AVG(e.cantidad) AS "Promedio de Cantidad Entregada"
+FROM Proveedores p
+JOIN Entregan  e ON p.rfc = e.rfc
+GROUP BY p.razonsocial
+HAVING AVG(e.cantidad) > (
+  SELECT AVG(e.cantidad)
+  FROM entregan e
+  WHERE rfc = 'VAGO780901'
+);
+
+10.
+SELECT Proveedores.RFC, Proveedores.RazonSocial
+FROM Proveedores
+JOIN Entregan ON Proveedores.RFC = Entregan.RFC
+JOIN Proyectos ON Entregan.Numero = Proyectos.Numero
+WHERE Proyectos.Denominacion = 'Infonavit Durango'
+GROUP BY Proveedores.RFC, Proveedores.RazonSocial
+HAVING SUM(CASE WHEN YEAR(Entregan.Fecha) = 2000 THEN Entregan.Cantidad ELSE 0 END) > SUM(CASE WHEN YEAR(Entregan.Fecha) = 2001 THEN Entregan.Cantidad ELSE 0 END);
