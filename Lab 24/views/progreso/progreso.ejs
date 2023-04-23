@@ -1,0 +1,115 @@
+<%- include('../includes/head.ejs'); %>
+<% if (mensaje != '') { %>
+    <div class="notification is-info is-light">
+        <%= mensaje %>
+    </div>
+<% } %>
+<% if (rol == "Cliente") { %>
+    <h1 class = "title is-1 is-centered has-text-white-ter"> Progreso</h1>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const registrosStr = "<%- escape(JSON.stringify(registros)) %>";
+        const registros = JSON.parse(unescape(registrosStr));
+        //Creamos la tabla dinamica
+        $(document).ready(function() {
+            //Creamos la grafica
+            var ctx = document.getElementById('grafico').getContext('2d');
+            var grafico = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Progreso',
+                        data: []
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            scaleLabel: {
+                                label:'Valor'
+                            },
+                            ticks: {
+                                beginAtZero: false
+                            }
+                        }]
+                    },
+                    plugins: {
+                        legend: {
+                            onClick: null
+                        }
+                    }
+                }
+
+            });
+            $('#seleccion').change(function() {
+                const fechas = [];
+                const medidas = [];
+                var valorSeleccionado = $(this).val();
+                var tabla = $('#tabla-dinamica');
+                tabla.empty();
+                tabla.append('<tr><th class="has-text-white-ter">Fecha</th><th class="has-text-white-ter">Medida</th></tr>');
+                registros.forEach(registro => {
+                    const fecha = new Date(registro.fecha);
+                    const fechaStr = fecha.getDate().toString().padStart(2, '0') + '/' + (fecha.getMonth() + 1).toString().padStart(2, '0') + '/' +fecha.getFullYear();
+                    if (registro.nombre==valorSeleccionado){
+                        tabla.append('<tr><td class="has-text-white-ter">'+fechaStr+'</td><td class="has-text-white-ter">'+registro.medida.toFixed(2)+'</td></tr>');
+                        fechas.unshift(fechaStr);
+                        medidas.unshift(registro.medida);
+                    }
+                })
+                actualizarGrafica(fechas, medidas);   
+                console.log(fechas);
+            });
+
+            function actualizarGrafica(fechas, medidas) {
+                grafico.data.labels = fechas;
+                grafico.data.datasets[0].data = medidas;
+                grafico.update();
+            }
+        });
+    </script>
+    <div class="columns is-4-desktop">
+        <columns class="column is-one-quarter">
+            <label for="seleccion" class="has-text-white-ter column is-full">Selecciona un valor:</label>
+            <div  class="column is-full">
+                <div class="select is-rounded is-normal is-info select-customizado">
+                    <select id="seleccion">
+                        <option selected="true" disabled="disabled">Escoja uno</option>
+                        <% medidas.forEach(medida => { %>
+                            <option value="<%= medida.tipo %>"><%= medida.tipo %></option>
+                        <% }) %>
+                    </select>
+                </div>
+            </div>
+            <br><br>
+            <div style="max-height: 350px; overflow: auto">
+            <table id="tabla-dinamica" class = "table has-text-white-ter has-background-black-ter is-1">
+                <thead>
+                    <tr>
+                        <th class="has-text-white-ter">Fecha</th>
+                        <th class="has-text-white-ter">Medida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            </div>
+        </columns>
+        <columns class="column">
+            <section class = "has-text-white-ter has-background-black-ter">
+                <div>
+                    <canvas class = "has-text-white-ter has-background-black-ter" id="grafico"></canvas>
+                </div>
+            </section>
+        </columns>
+    </div>
+    
+
+<% }  else if (rol == "Administrador") { %>
+    <h1 class="title  is-1 has-text-white-ter"></h1>
+    <img src = "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png">
+<% } %>
+<%- include('../includes/foot.ejs'); %>
+

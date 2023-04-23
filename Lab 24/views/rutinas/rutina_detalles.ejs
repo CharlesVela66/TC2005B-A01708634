@@ -1,0 +1,60 @@
+<%- include('../includes/head.ejs'); %>
+
+<div class="container" style="margin-top: 20px;" >
+  <form action="/rutinas/hola" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+  <div class="card">
+    <header class="card-header" style="background-color: rgb(31, 134, 134);">
+      <p class="card-header-title has-text-white-ter" style="font-size: 30px;" >
+        <%= rutina.nombre%>
+      </p>
+    </header>
+  </div>
+  <div class="box has-background-black-ter">
+    <p class="has-text-white-ter">Descripcion: <%= rutina.descripcion%></p>
+    <p class="has-text-white-ter">Tipo Rutina: <%= rutina.tiporutina %></p>
+    <br>
+    <table class="table has-background-black-ter" width="100%">
+      <thead><p class="subtitle is-4 has-text-white-ter">Ejercicios</p></thead>
+      <thead>
+        <tr>
+          <th class="has-text-white-ter">Nombre</th>
+          <th class="has-text-white-ter">Descripción</th>
+          <th class="has-text-white-ter">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (rutina_ejercicio.length > 0) { %>
+          <% for (let rutina_ejercicios of rutina_ejercicio) { %>
+            <tr>
+            <td class="has-text-white-ter"><%= rutina_ejercicios.descripcion%></td>
+            <td class="has-text-white-ter"><%= rutina_ejercicios.descripcion_ejercicio%></td>
+            <td class="has-text-white-ter"> <a class= "yt-video" href="<%= rutina_ejercicios.video_ejercicio%>">Video Demostrativo</a></td>
+          </tr>
+            <% } %>
+        <% } %>
+      </tbody>
+    </table>
+    <br><br>
+    <% if (rol == "Cliente") { %>
+    <div class="buttons">
+      <input class="button is-primary" type="button" value="Seleccionar Rutina" onclick="openPopup()">
+      <div class="popup" id="popup">
+        <h2 class="title is-4 has-text-centered has-text-white-ter">¿Seguro que quieres seleccionar la rutina de <%= rutina.nombre%>?</h2>
+        <button class="button is-success" type = "submit">Confirmar</button>
+        <button class="button is-danger" type="button" onclick="closePopup()">Cancelar</button>
+      </div>
+    </form>
+    <script>
+    let popup = document.getElementById("popup");
+    function openPopup(){
+      popup.classList.add("open-popup");
+    }
+    function closePopup(){
+      popup.classList.remove("open-popup")
+      }
+      </script>
+  <% } %>
+</div>
+
+<%- include('../includes/foot.ejs'); %>

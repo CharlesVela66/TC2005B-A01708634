@@ -1,0 +1,23 @@
+NORMALIZACION
+¿Qué utilidad tiene el normalizar una BD?
+- Permite escalabilidad (tiempo de vida de una BD)
+- Permite recuperación de datos (facilita las consultas)
+- ELIMINAR ANOMALIAS (inserción, eliminación, de actualización, consultas)
+
+Servicios(cliente, domicilio y estado , año, rentabasica 1, servicios adicionales 1, rentabasica 2, servicios adicionales 2, rentabasica 3, servicios adicionales 3, .... rentabasica 12, servicios adicionales 12)
+
+----> Normalizar
+
+1FN ( Si los valores de las celdas tienen valores atómicos)
+* Un atributo en una BD no puede permitir arreglos 
+Servicios (cliente, domicilio, estado, año, mes, rentabasica, servicios adicionales
+
+2FN (Agregar una llave primaria que garantice unicidad)
+Servicio(id_contrato, cliente, domicilio, estado, año, mes, rentabasica, servicios adicionales)
+
+3FN (Eliminar dependencias de los atributos con otras tablas y que nada más dependa de su propia tabla)
+
+Estado (idEstado, Nombre)
+Cliente (idCliente, Nombre, Domicilio, idEstado)
+Pagos (idCliente, idEstado, fecha, monto)
+Servicios(idServicio, descripcion, tarifa)

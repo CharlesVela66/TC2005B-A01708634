@@ -1,0 +1,69 @@
+<%- include('../includes/head.ejs'); %>
+
+<% if (rol == "Administrador") { %>
+
+<h1 class = "title is-1 has-text-white-ter">Ejercicios</h1>
+
+
+<% if (mensaje == 'El ejercicio fue registrado exitosamente.' || mensaje == 'Ejercicio eliminado exitosamente') { %>
+    <div class="notification is-success has-text-white">
+      <%= mensaje %>
+      <button class="delete" onclick="cerrarNotificacion()"></button>
+    </div>
+  <% } else if (mensaje == 'El ejercicio fue actualizado exitosamente.') { %>
+      <div class="notification is-success has-text-white">
+        <%= mensaje %>
+        <button class="delete" onclick="cerrarNotificacion()"></button>
+      </div>
+  <% } else if (mensaje != '') { %>
+    <div class="notification is-danger has-text-white">
+      <%= mensaje %>
+      <button class="delete" onclick="cerrarNotificacion()"></button>
+    </div>
+  <% } %>
+
+
+<h3 class="title is-5 has-text-white-ter"> Selecciona un ejercicio para ver mas detalles:</h3>
+<% if (ejercicios.length > 0) { %>
+    <div class="columns">
+        <% let columns = 0; %>
+        <% for (let ejercicio of ejercicios) { %>
+            <% if (columns % 4 == 0) { %>
+    </div>
+    <div class="columns">
+            <% } %>
+            <% columns++; %>
+            <div class="column is-3">
+                <div class="card">
+                    <div class="card-image"> 
+                        <a href="/ejercicios/<%= ejercicio.id_ejercicio %>">                 
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                </div>
+                                    <div class="media-content">
+                                        <p class="title is-4 has-text-white-ter"><%= ejercicio.descripcion %></p>  
+                    
+                                     </div>
+                                </div>               
+                            </div>
+                        </div>
+            </div>
+        <% } %>
+    </div>
+<% } else { %>
+    <h1 class="has-text-white-ter">No hay ejercicios registrados</h1>
+<% } %>   
+<script>
+    function cerrarNotificacion() {
+      document.querySelector('.notification').style.display = 'none';
+    }
+  </script>
+
+<% }  else if (rol == "Cliente") { %>
+  <h1 class="title is-1 has-text-white-ter">No puedes entrar aquí.</h1>
+ 
+<% } %>
+
+<%- include('../includes/foot.ejs'); %>
