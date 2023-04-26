@@ -1,0 +1,31 @@
+{
+  "name": "lab-12",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CharlesVela66/TC2005B-A01708634.git"
+  },
+  "keywords": [
+    "lab12"
+  ],
+  "author": "Carlos Velasco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CharlesVela66/TC2005B-A01708634/issues"
+  },
+  "homepage": "https://github.com/CharlesVela66/TC2005B-A01708634#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "nodemon": "^2.0.21",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0"
+  }
+}

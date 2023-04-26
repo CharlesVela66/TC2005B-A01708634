@@ -1,0 +1,107 @@
+<%- include('include/head.ejs') %>
+
+            <h2 class="box title is-2 has-text-centered	has-background-light">
+                Inicia Sesión
+            </h2>
+            <div class="columns ">
+                <div class=" box column is-two-fifths is is-offset-3">
+                    <label for="contraseña">Contraseña</label>
+                    <input class = "input" type="password" placeholder="Introduzca su contraseña" id="contraseña" onkeyup="return validar()" size="50">
+                    <label for="re-contraseña">Reescriba la contraseña</label>
+                    <input class = "input" type="password" placeholder="Reintroduzca su contraseña" id="re-contraseña" oninput="return comparar()">
+                    <div>
+                        <a href="/auth/google" class="button is-link">
+                          <span class="icon">
+                            <i class="fab fa-google"></i>
+                          </span>
+                          <span>Iniciar sesión con Google</span>
+                        </a>
+                      </div>
+                </div>
+                <div class="box column is-offset-1 has-background-light">
+                    <ul>
+                        <li id="mayuscula"> Al menos una mayúscula</li>
+                        <li id="minuscula"> Al menos una minúscula</li>
+                        <li id="caracter_especial"> Al menos un caracter especial</li>
+                        <li id="numero"> Al menos un número</li>
+                        <li id="longitud"> Al menos una longitud de 6</li>
+                    </ul>
+                    <a href = "/home">
+                        <button class = "button" id = "home">
+                            Ingresa al sistema
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+<%- include('include/foot.ejs') %>
+
+<script>
+    let pass = document.getElementById("contraseña");
+    let pass2 = document.getElementById("re-contraseña");
+    let may = document.getElementById("mayuscula");
+    let min = document.getElementById("minuscula");
+    let car = document.getElementById("caracter_especial");
+    let num = document.getElementById("numero");
+    let len = document.getElementById("longitud");
+    let home = document.getElementById("home");
+    home.style.display = 'none';
+
+
+    function validar(){
+
+        // Comparamos la contraseña a ver si cumple los requisitos de cada condición
+        if (pass.value.match(/[0-9]/)){
+            num.style.color = "green";
+        }
+        else {
+            num.style.color = "red";
+        }
+
+        if (pass.value.match(/[A-Z]/)){
+            may.style.color = "green";
+        }
+        else {
+            may.style.color = "red";
+        }
+        if (pass.value.match(/[a-z]/)){
+            min.style.color = "green";
+        }
+        else {
+            min.style.color = "red";
+        }
+        if (pass.value.match(/[!\@\#\$\%\^\&\*\(\)\_\-\+\=\:\;\'\"\<\>\?\/]/)){
+            car.style.color = "green";
+        }
+        else {
+            car.style.color = "red";
+        }
+        if (pass.value.length >= 6){
+            len.style.color = "green";
+        }
+        else {
+            len.style.color = "red";
+        }
+    }
+    function comparar(){
+
+        if (pass.value == pass2.value && may.style.color == "green" && min.style.color == "green" && car.style.color == "green" && num.style.color == "green" && len.style.color == "green"){
+            may.style.display = 'none';
+            min.style.display = 'none';
+            car.style.display = 'none';
+            num.style.display = 'none';
+            len.style.display = 'none';
+            alert("Las contraseñas son idénticas y válidas!");
+            home.style.display = 'block';
+        }
+        else {
+            may.style.display = 'block';
+            min.style.display = 'block';
+            car.style.display = 'block';
+            num.style.display = 'block';
+            len.style.display = 'block';
+            home.style.display = 'none';
+        }
+    }
+
+</script>
